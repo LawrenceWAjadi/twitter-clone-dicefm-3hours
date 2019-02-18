@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ProfileImage from "./ProfileImage.js";
+import ProfileImageContainer from "./ProfileImageContainer";
 import reactStringReplace from "react-string-replace";
 
 export default class TweetList extends Component {
@@ -46,11 +47,6 @@ const TweetScreenName = styled.span`
 const TweetContents = styled.div`
   padding: 10px;
   flex: 7;
-`;
-
-const ProfileImageContainer = styled.div`
-  padding: 10px;
-  flex: 1;
 `;
 
 const TweetText = styled.p``;
