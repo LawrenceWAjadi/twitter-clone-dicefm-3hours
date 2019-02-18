@@ -9,15 +9,17 @@ export default class TweetList extends Component {
   render() {
     return this.props.tweets.map((tweet, i) => (
       <>
-        <ProfileImage key={tweet + i} src={tweet.user.profile_image_url} />
-        <TweetMeta>
-          <p>
-            <strong>{tweet.user.name}</strong>&nbsp;{tweet.user.screen_name}
-            &nbsp;
-            {tweet.created_at.substr(4, 7)}
-          </p>
-        </TweetMeta>
-        <TweetTextContainer text={tweet.text} />
+        <TweetArea>
+          <ProfileImage key={tweet + i} src={tweet.user.profile_image_url} />
+          <TweetMeta>
+            <p>
+              <strong>{tweet.user.name}</strong>&nbsp;{tweet.user.screen_name}
+              &nbsp;
+              {tweet.created_at.substr(4, 7)}
+            </p>
+          </TweetMeta>
+          <TweetTextContainer text={tweet.text} />
+        </TweetArea>
         <TweetSpacer />
       </>
     ));
@@ -36,6 +38,8 @@ const TweetSpacer = styled.div`
   display: block;
   background-color: rgb(248, 248, 248);
 `;
+
+const TweetArea = styled.div``;
 
 const TweetTextContainer = ({ text }) => {
   return (
