@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ApolloClient, { gql } from "apollo-boost";
 import "./App.css";
+import Container from "./components/Container";
 
 const client = new ApolloClient({
   uri: "https://www.graphqlhub.com/graphql"
@@ -58,7 +59,11 @@ class App extends Component {
   }
 
   render() {
-    return <div>Hello</div>;
+    return this.state.data ? (
+      <Container data={this.state.data} />
+    ) : (
+      <p>Loading...</p>
+    );
   }
 }
 
