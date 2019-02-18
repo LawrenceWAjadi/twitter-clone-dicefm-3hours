@@ -10,15 +10,20 @@ export default class TweetList extends Component {
     return this.props.tweets.map((tweet, i) => (
       <>
         <TweetArea>
-          <ProfileImage key={tweet + i} src={tweet.user.profile_image_url} />
-          <TweetMeta>
-            <p>
-              <strong>{tweet.user.name}</strong>&nbsp;{tweet.user.screen_name}
-              &nbsp;
-              {tweet.created_at.substr(4, 7)}
-            </p>
-          </TweetMeta>
-          <TweetTextContainer text={tweet.text} />
+          <ProfileImageContainer>
+            <ProfileImage key={tweet + i} src={tweet.user.profile_image_url} />
+          </ProfileImageContainer>
+          <TweetContents>
+            <TweetMeta>
+              <p>
+                <strong>{tweet.user.name}</strong>&nbsp;&nbsp;
+                <TweetScreenName>@{tweet.user.screen_name}</TweetScreenName>
+                &nbsp;&nbsp;
+                <TweetDate>{tweet.created_at.substr(4, 7)}</TweetDate>
+              </p>
+            </TweetMeta>
+            <TweetTextContainer text={tweet.text} />
+          </TweetContents>
         </TweetArea>
         <TweetSpacer />
       </>
@@ -30,7 +35,29 @@ const TweetMeta = styled.div`
   display: flex-inline;
 `;
 
+const TweetArea = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const TweetScreenName = styled.span`
+  color: rgb(128, 128, 128);
+`;
+const TweetContents = styled.div`
+  padding: 10px;
+  flex: 7;
+`;
+
+const ProfileImageContainer = styled.div`
+  padding: 10px;
+  flex: 1;
+`;
+
 const TweetText = styled.p``;
+
+const TweetDate = styled.span`
+  color: rgb(128, 128, 128);
+`;
 
 const TweetSpacer = styled.div`
   width: 100%;
@@ -38,8 +65,6 @@ const TweetSpacer = styled.div`
   display: block;
   background-color: rgb(248, 248, 248);
 `;
-
-const TweetArea = styled.div``;
 
 const TweetTextContainer = ({ text }) => {
   return (
